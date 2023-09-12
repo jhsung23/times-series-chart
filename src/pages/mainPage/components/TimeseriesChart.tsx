@@ -20,7 +20,7 @@ import { useTheme } from 'styled-components';
 
 const CHART_NAME = `Time-series Chart of ${Object.keys(mockData.response)[0].split(' ')[0]}`;
 
-const chartDatas = makeKeyToAttributeOfValue(mockData.response, 'time');
+const chartDatas = makeKeyToAttributeOfValue(mockData.response, 'time', (key) => key.split(' ')[1]);
 const filterChipValues = getValuesFromObjectArray(getUniqueAttributes(chartDatas, 'id'));
 
 const TimeseriesChart = () => {
