@@ -24,11 +24,11 @@ const Container = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.background};
   padding: 1rem;
   border-radius: 4px;
-  border: 0.2px solid #78716c;
-  color: #292524;
+  border: 0.2px solid ${({ theme }) => theme.colors.border};
+  color: ${({ theme }) => theme.colors.text};
 `;
 
 const Li = styled.li<{ color?: string }>`

@@ -22,10 +22,10 @@ const Chip = ({ value, size = 'small', selected = false, changeSelectedChip }: P
 
 const ChipItem = styled.li<StyleProps>`
   border-radius: 16px;
-  border: 1px solid #dad6d1;
-  background-color: #f7f7f7;
+  border: 1px solid ${({ theme }) => theme.colors.chip.border};
+  background-color: ${({ theme }) => theme.colors.chip.background};
+  color: ${({ theme }) => theme.colors.chip.text};
   cursor: pointer;
-  color: #939393;
 
   ${({ size }) => css`
     font-size: ${size};
@@ -34,9 +34,9 @@ const ChipItem = styled.li<StyleProps>`
   ${({ selected }) =>
     selected &&
     css`
-      color: #20908e;
-      border: 1px solid #61c0bf;
-      background-color: #e4f6f2;
+      color: ${({ theme }) => theme.colors.chip.selectedText};
+      border: 1px solid ${({ theme }) => theme.colors.chip.selectedBorder};
+      background-color: ${({ theme }) => theme.colors.chip.selectedBackground};
     `}
 `;
 

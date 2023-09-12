@@ -16,6 +16,7 @@ import { mockData } from '@/data/mockData';
 import { useChip } from '@/hooks';
 import { TimeseriesTooltip } from '@/pages/mainPage';
 import { getUniqueAttributes, getValuesFromObjectArray, makeKeyToAttributeOfValue } from '@/utils';
+import { useTheme } from 'styled-components';
 
 const CHART_NAME = `Time-series Chart of ${Object.keys(mockData.response)[0].split(' ')[0]}`;
 
@@ -23,6 +24,9 @@ const chartDatas = makeKeyToAttributeOfValue(mockData.response, 'time');
 const filterChipValues = getValuesFromObjectArray(getUniqueAttributes(chartDatas, 'id'));
 
 const TimeseriesChart = () => {
+  const { colors } = useTheme();
+  const chartColors = colors.chart;
+
   const { selectedChip, changeSelectedChip } = useChip();
   const filteredDatas = new Set(
     chartDatas.filter((data) => data.id === selectedChip).map((data) => data.time),
@@ -36,7 +40,7 @@ const TimeseriesChart = () => {
         selectedChip={selectedChip}
         changeSelectedChip={changeSelectedChip}
       />
-      <ResponsiveContainer width={'85%'} height={600}>
+      <ResponsiveContainer width={'85%'} height={512}>
         <ComposedChart data={chartDatas} margin={{ top: 0, right: 24, bottom: 0, left: 24 }}>
           <XAxis dataKey="time" domain={['dataMin', 'dataMax']} />
           <YAxis
@@ -56,14 +60,24 @@ const TimeseriesChart = () => {
           <Bar
             yAxisId={'left'}
             dataKey="value_bar"
-            fill="#aaded1"
+            fill={chartColors.secondaryBar}
             onClick={(data) => changeSelectedChip(data.id)}
           >
             {chartDatas.map((data) => (
-              <Cell key={data.time} fill={filteredDatas.has(data.time) ? '#2dbebb' : '#aaded1'} />
+              <Cell
+                key={data.time}
+                fill={
+                  filteredDatas.has(data.time) ? chartColors.primaryBar : chartColors.secondaryBar
+                }
+              />
             ))}
           </Bar>
-          <Area yAxisId={'right'} dataKey="value_area" fill="#fd9a9d" stroke="#ff8589" />
+          <Area
+            yAxisId={'right'}
+            dataKey="value_area"
+            fill={chartColors.secondaryArea}
+            stroke={chartColors.primaryArea}
+          />
         </ComposedChart>
       </ResponsiveContainer>
     </>
