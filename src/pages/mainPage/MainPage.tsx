@@ -18,6 +18,8 @@ const Main = styled.main`
   width: 100vw;
   min-height: 100vh;
   height: 100%;
+  background-color: ${({ theme }) => theme.colors.background};
+  color: ${({ theme }) => theme.colors.text};
 `;
 
 export default MainPage;
