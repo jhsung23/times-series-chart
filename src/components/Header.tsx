@@ -8,7 +8,7 @@ type Props = {
 const Header = ({ themeMode, toggleTheme }: Props) => {
   return (
     <StyledHeader onClick={toggleTheme}>
-      Time-Series Chart
+      Time-series Chart
       <ThemeButton type="button" onClick={toggleTheme}>
         {themeMode === 'light' ? '☀️' : '🌙'}
       </ThemeButton>
