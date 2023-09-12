@@ -5,6 +5,7 @@ import {
   ComposedChart,
   Legend,
   ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
 } from 'recharts';
@@ -13,6 +14,7 @@ import { Heading } from '@/components';
 import { ChipSet } from '@/components/Chip';
 import { mockData } from '@/data/mockData';
 import { useChip } from '@/hooks';
+import { TimeseriesTooltip } from '@/pages/mainPage';
 import { getUniqueAttributes, getValuesFromObjectArray, makeKeyToAttributeOfValue } from '@/utils';
 
 const CHART_NAME = `Time-series Chart of ${Object.keys(mockData.response)[0].split(' ')[0]}`;
@@ -50,9 +52,10 @@ const TimeseriesChart = () => {
             domain={[0, 200]}
           />
           <Legend />
-          <Bar yAxisId={'left'} dataKey="value_bar" fill="#b0dbd0">
+          <Tooltip content={<TimeseriesTooltip />} />
+          <Bar yAxisId={'left'} dataKey="value_bar" fill="#aaded1">
             {chartDatas.map((data) => (
-              <Cell key={data.time} fill={filteredDatas.has(data.time) ? '#2dbebb' : '#b0dbd0'} />
+              <Cell key={data.time} fill={filteredDatas.has(data.time) ? '#2dbebb' : '#aaded1'} />
             ))}
           </Bar>
           <Area yAxisId={'right'} dataKey="value_area" fill="#fd9a9d" stroke="#ff8589" />
