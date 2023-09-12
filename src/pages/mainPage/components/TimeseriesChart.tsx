@@ -20,7 +20,7 @@ const CHART_NAME = `Time-series Chart of ${Object.keys(mockData.response)[0].spl
 const chartDatas = makeKeyToAttributeOfValue(mockData.response, 'time');
 const filterChipValues = getValuesFromObjectArray(getUniqueAttributes(chartDatas, 'id'));
 
-const RegionChart = () => {
+const TimeseriesChart = () => {
   const { selectedChip, changeSelectedChip } = useChip();
   const filteredDatas = new Set(
     chartDatas.filter((data) => data.id === selectedChip).map((data) => data.time),
@@ -62,4 +62,4 @@ const RegionChart = () => {
   );
 };
 
-export default RegionChart;
+export default TimeseriesChart;

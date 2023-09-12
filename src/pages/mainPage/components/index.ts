@@ -1,1 +1,1 @@
-export { default as RegionChart } from './RegionChart';
+export { default as TimeseriesChart } from './TimeseriesChart';

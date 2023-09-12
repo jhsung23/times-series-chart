@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-import { RegionChart } from '@/pages/mainPage';
+import { TimeseriesChart } from '@/pages/mainPage';
 
 const MainPage = () => {
   return (
     <Main>
-      <RegionChart />
+      <TimeseriesChart />
     </Main>
   );
 };
