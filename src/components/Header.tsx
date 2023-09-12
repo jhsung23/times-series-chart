@@ -1,7 +1,19 @@
 import styled from 'styled-components';
 
-const Header = () => {
-  return <StyledHeader>Time-Series Chart</StyledHeader>;
+type Props = {
+  themeMode: 'light' | 'dark';
+  toggleTheme: () => void;
+};
+
+const Header = ({ themeMode, toggleTheme }: Props) => {
+  return (
+    <StyledHeader onClick={toggleTheme}>
+      Time-Series Chart
+      <ThemeButton type="button" onClick={toggleTheme}>
+        {themeMode === 'light' ? '☀️' : '🌙'}
+      </ThemeButton>
+    </StyledHeader>
+  );
 };
 
 export default Header;
@@ -19,4 +31,13 @@ const StyledHeader = styled.header`
   z-index: 50;
   position: sticky;
   top: 0;
+  background-color: ${({ theme }) => theme.colors.background};
+  color: ${({ theme }) => theme.colors.text};
+`;
+
+const ThemeButton = styled.button`
+  all: unset;
+  position: absolute;
+  right: 25px;
+  font-size: 1.8rem;
 `;
