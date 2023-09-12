@@ -53,7 +53,12 @@ const TimeseriesChart = () => {
           />
           <Legend />
           <Tooltip content={<TimeseriesTooltip />} />
-          <Bar yAxisId={'left'} dataKey="value_bar" fill="#aaded1">
+          <Bar
+            yAxisId={'left'}
+            dataKey="value_bar"
+            fill="#aaded1"
+            onClick={(data) => changeSelectedChip(data.id)}
+          >
             {chartDatas.map((data) => (
               <Cell key={data.time} fill={filteredDatas.has(data.time) ? '#2dbebb' : '#aaded1'} />
             ))}
