@@ -40,4 +40,5 @@ const ThemeButton = styled.button`
   position: absolute;
   right: 25px;
   font-size: 1.8rem;
+  cursor: pointer;
 `;
