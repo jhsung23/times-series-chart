@@ -1,4 +1,4 @@
-export const getUniqueAttributes = <
+export const getUniqueProperties = <
   TData extends Record<string, unknown>,
   TKey extends keyof TData,
 >(
