@@ -15,12 +15,12 @@ import { ChipSet } from '@/components/Chip';
 import { mockData } from '@/data/mockData';
 import { useChip } from '@/hooks';
 import { TimeseriesTooltip } from '@/pages/mainPage';
-import { getUniqueProperties, getValuesFromObjectArray, makeKeyToAttributeOfValue } from '@/utils';
+import { getUniqueProperties, getValuesFromObjectArray, makeKeyToPropertyOfValue } from '@/utils';
 import { useTheme } from 'styled-components';
 
 const CHART_NAME = `Time-series Chart of ${Object.keys(mockData.response)[0].split(' ')[0]}`;
 
-const chartDatas = makeKeyToAttributeOfValue(mockData.response, 'time', (key) => key.split(' ')[1]);
+const chartDatas = makeKeyToPropertyOfValue(mockData.response, 'time', (key) => key.split(' ')[1]);
 const filterChipValues = getValuesFromObjectArray(getUniqueProperties(chartDatas, 'id'));
 
 const TimeseriesChart = () => {

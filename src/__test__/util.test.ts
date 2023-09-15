@@ -1,4 +1,4 @@
-import { getUniqueProperties, getValuesFromObjectArray, makeKeyToAttributeOfValue } from '../utils';
+import { getUniqueProperties, getValuesFromObjectArray, makeKeyToPropertyOfValue } from '../utils';
 import { datas } from './testData';
 
 describe('getUniqueProperties 함수 테스트', () => {
@@ -46,17 +46,17 @@ describe('getValuesFromObjectArray 함수 테스트', () => {
   });
 });
 
-describe('makeKeyToAttributeOfValue 함수 테스트', () => {
+describe('makeKeyToPropertyOfValue 함수 테스트', () => {
   test('객체의 key를 value 객체의 attribute로 바꾼 객체 배열을 반환해야 한다.', () => {
     const obj = { id: 1 };
-    expect(makeKeyToAttributeOfValue({ 1995: obj }, 'year')).toEqual([{ ...obj, year: '1995' }]);
-    expect(makeKeyToAttributeOfValue({ 1995: obj }, 'age', (key) => 2023 - parseInt(key))).toEqual([
+    expect(makeKeyToPropertyOfValue({ 1995: obj }, 'year')).toEqual([{ ...obj, year: '1995' }]);
+    expect(makeKeyToPropertyOfValue({ 1995: obj }, 'age', (key) => 2023 - parseInt(key))).toEqual([
       { ...obj, age: 2023 - 1995 },
     ]);
-    expect(makeKeyToAttributeOfValue({ choco: obj }, 'name')).toEqual([{ ...obj, name: 'choco' }]);
-    expect(makeKeyToAttributeOfValue({ choco: obj }, 'name', (key) => `user-${key}`)).toEqual([
+    expect(makeKeyToPropertyOfValue({ choco: obj }, 'name')).toEqual([{ ...obj, name: 'choco' }]);
+    expect(makeKeyToPropertyOfValue({ choco: obj }, 'name', (key) => `user-${key}`)).toEqual([
       { ...obj, name: 'user-choco' },
     ]);
-    expect(makeKeyToAttributeOfValue({ true: obj }, 'isOk')).toEqual([{ ...obj, isOk: 'true' }]);
+    expect(makeKeyToPropertyOfValue({ true: obj }, 'isOk')).toEqual([{ ...obj, isOk: 'true' }]);
   });
 });
